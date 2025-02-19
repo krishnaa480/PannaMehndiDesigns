@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipping Form with Order Summary</title>
+    <!-- font link here -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Montserrat", sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color:#F3EDD5;
+           
+        }
+
+        .shipping-form-container {
+            width: 100%;
+            max-width: 700px;
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* Order Summary Styling */
+        .order-summary {
+            background-color: #fafafa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .order-summary h3 {
+            font-size: 1.4em;
+            color: #444;
+            margin-bottom: 15px;
+            font-weight: bold;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        .product-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .product-item:last-child {
+            border-bottom: none;
+        }
+
+        .product-item img {
+            width: 60px;
+            height: 60px;
+            border-radius: 5px;
+            margin-right: 15px;
+        }
+
+        .product-details {
+            flex: 1;
+            color: #333;
+        }
+
+        .product-details h4 {
+            font-size: 1em;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+        }
+
+        .quantity-control input {
+            width: 50px;
+            padding: 5px;
+            margin-left: 10px;
+            text-align: center;
+            border: 1px solid #525252;
+            border-radius: 5px;
+        }
+
+        .summary-section {
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.1em;
+        }
+
+        .summary-section .label {
+            color: #333;
+            font-weight: bold;
+        }
+
+        .total-section {
+            padding-top: 15px;
+            border-top: 2px solid #ddd;
+            font-size: 1.2em;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Shipping Form Styling */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: #F3EDD5;
+            color: #393939;
+            border: none;
+            font-size: 1.1em;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .submit-btn:hover {
+            background-color:#F3EDD5;
+        }
+    </style>
+</head>
+<body>
+    <div class="shipping-form-container">
+        <h2>Shipping Information</h2>
+        
+        <!-- Order Summary Section -->
+        <div class="order-summary">
+            <h3>Order Summary</h3>
+            <div id="product-summary-container"></div>
+            <div class="summary-section">
+                <span class="label">Subtotal:</span>
+                <span>₹<span id="subtotal">0.00</span></span>
+            </div>
+            <div class="summary-section">
+                <span class="label">Shipping:</span>
+                <span>₹<span id="shipping-cost">0.00</span></span>
+            </div>
+            <div class="total-section">
+                <span>Total:</span>
+                <span>₹<span id="total-price">0.00</span></span>
+            </div>
+
+            <div style="margin-top: 20px;" class="note-slection">
+                <span style="color: red; font-weight:700;">Note:</span> <br>
+                <li>Dispatch will be done after 2-3 days of placed order</li> <br>
+                <li>Delivery takes 7-8 days max after dispatch</li> <br>
+                <li>Before opening the parcel, please make sure to record a video for any damage & missing product send to this (WhatsApp no : 7275791696)</li> <br>
+                <li>Pre-paid – COD not available</li>
+            </div>
+        
+        </div>
+
+        <!-- Shipping Form -->
+        <form id="shipping-form" action="https://formspree.io/f/xqakbabv" method="POST">
+            <div class="form-group">
+                <label for="full-name">Full Name</label>
+                <input type="text" id="full-name" name="full-name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address</label>
+                <textarea id="address" name="address" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" id="city" name="city" required>
+            </div>
+
+            <div class="form-group">
+                <label for="state">State</label>
+                <input type="text" id="state" name="state" required>
+            </div>
+
+            <div class="form-group">
+                <label for="zip">Postal Code</label>
+                <input type="text" id="zip" name="zip" required>
+            </div>
+
+            <div class="form-group">
+                <label for="country">Country</label>
+                <select id="country" name="country" required>
+                    <option value="">Select Country</option>
+                    <option value="IN">India</option>
+                    <option value="US">United States</option>
+                    <option value="UK">United Kingdom</option>
+                </select>
+            </div>
+            <!-- Product Details Section (Read-only) -->
+            <div id="product-details-container"></div>
+
+            <!-- secreen shot upload -->
+             <div class="form-group">
+                <label for="screenshot upload">Upload Payment screen shot</label>
+                <input type="file" id="myFile" name="filename">
+             </div>
+
+            <!-- Read-only field for the total with shipping -->
+            <div class="form-group">
+                <label>Total (with Shipping)</label>
+                <input type="text" id="final-total" name="final-total" readonly>
+            </div>
+            
+           
+            
+            <button type="submit" class="submit-btn">Proceed to Payment</button>
+            <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_PMG59dZgCx1ZXv" async> </script> </form>
+        </form>
+    </div>
+
+    <script>
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const baseShippingCost = 60;
+
+        function renderProductSummary() {
+            const productSummaryContainer = document.getElementById('product-summary-container');
+            const productDetailsContainer = document.getElementById('product-details-container');
+            productSummaryContainer.innerHTML = ''; // Clear existing items
+            productDetailsContainer.innerHTML = ''; // Clear existing product details in form
+
+            let subtotal = 0;
+            let totalQuantity = 0;
+
+            cart.forEach((product, index) => {
+                const itemTotal = product.price * product.quantity;
+                subtotal += itemTotal;
+                totalQuantity += product.quantity;
+
+                const productItem = document.createElement('div');
+                productItem.className = 'product-item';
+                productItem.innerHTML = `
+                    <img src="${product.image}" alt="${product.title}">
+                    <div class="product-details">
+                        <h4>${product.title}</h4>
+                        <p>Price: ₹${product.price.toFixed(2)}</p>
+                        <div class="quantity-control">
+                            <span>Quantity:</span>
+                            <input type="number" value="${product.quantity}" min="1" onchange="updateQuantity(${index}, this.value)">
+                        </div>
+                    </div>
+                    <p>₹${itemTotal.toFixed(2)}</p>
+                `;
+                productSummaryContainer.appendChild(productItem);
+
+
+
+
+                // Add product details to the form (readonly)
+                const productDetails = document.createElement('div');
+                productDetails.className = 'form-group';
+                productDetails.innerHTML = `
+                    <label>Product Name:</label>
+                    <input type="text" name="prodcut-name" value="${product.title}" readonly>
+                    <label>Quantity:</label>
+                    <input type="text" name="quantity" value="${product.quantity}" readonly>
+                `;
+                productDetailsContainer.appendChild(productDetails);
+            });
+
+            const shippingCost = baseShippingCost * totalQuantity;
+            const total = subtotal + shippingCost;
+
+            document.getElementById('subtotal').innerText = subtotal.toFixed(2);
+            document.getElementById('shipping-cost').innerText = shippingCost.toFixed(2);
+            document.getElementById('total-price').innerText = total.toFixed(2);
+
+            // Set final total in form's read-only field
+            document.getElementById('final-total').value = `₹${total.toFixed(2)}`;
+        }
+
+        function updateQuantity(index, newQuantity) {
+            cart[index].quantity = parseInt(newQuantity);
+            localStorage.setItem('cart', JSON.stringify(cart)); // Update localStorage
+            renderProductSummary(); // Re-render with updated totals
+        }
+
+        renderProductSummary(); // Initial render
+    </script>
+</body>
+</html>

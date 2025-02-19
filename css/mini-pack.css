@@ -1,0 +1,176 @@
+* {
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html,body {
+width:100%;
+height:100%;
+font-family: "Montserrat", sans-serif;
+}
+
+header{
+    width:100%;
+    height:100%;
+    /* background-color: lightblue; */
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.inner-mini-pack{
+    width:80%;
+    height:80%;
+    /* background-color: lightcoral; */
+    display: flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    align-items: center;
+    gap: 10px;
+}
+
+.colum-six-image-area{
+    width:48%;
+    height:100%;
+}
+.colum-six-image-area img{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+
+}
+
+.colum-six-content-area{
+    width:48%;
+    height:100%;
+    /* background-color: lightgreen; */
+    display: flex;  
+    justify-content: center;
+    flex-direction: column;
+    gap:20px;
+
+}
+
+.colum-six-content-area p{
+    color: #858585;
+    font-size: 1.5vw;
+}
+
+.colum-six-content-area h1{
+    font-size: 3.5vw;
+}
+.colum-six-content-area h3{
+    font-size: 2.2vw;
+}
+
+button{
+    padding:5px 20px;
+    border-radius:.2rem;
+}
+
+button a{
+    text-decoration: none;
+    color:#fff;
+}
+
+button:nth-child(1){
+    background-color:green;
+    border: none;
+}
+
+button:nth-child(2){
+    background-color:orange;
+    border: none;
+}
+
+/* related products */
+.related{
+    width:100%;
+    height:fit-content;
+    /* background-color: lightblue; */
+}
+
+
+
+/* third page start here */
+.products{
+    width:100%;
+    height:fit-content;
+    color: rgb(62, 62, 62);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    /* background-color: red; */
+    padding:10px;
+}
+
+.products h1{
+    font-size: 2.5rem;
+}
+
+.card-container{
+    width:80%;
+    height:fit-content;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    /* background-color: green; */
+
+}
+
+.card{
+    width:250px;
+    padding:20px;
+    height:auto;
+    border: 1.4px solid rgba(253, 221, 42, 0.614);
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    gap:20px;
+    text-align: center;    
+}
+
+.card img{
+    width:100%;
+    height:50%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.card h2{
+    border-bottom: 1.5px solid gold;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    padding: 5px;
+}
+
+.card span{
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+.btn{
+    padding:5px 5px; 
+    background-color:gold;
+    border: 0;
+    transition: all .2s linear;
+}
+
+.btn a{
+    text-decoration: none;
+    color: rgb(62, 62, 62);
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+.btn:hover{
+    transform:rotate(8deg);
+}
+
+/* third page end here */

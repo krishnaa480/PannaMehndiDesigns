@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            color: #333;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .order-container {
+            max-width: 600px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .order-details {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        .order-form {
+            display: flex;
+            flex-direction: column;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .submit-button {
+            background-color: #8e44ad;
+            color: white;
+            font-size: 1.1rem;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .submit-button:hover {
+            background-color: #71368a;
+        }
+    </style>
+</head>
+<body>
+    <div class="order-container">
+        <div class="order-details" id="orderDetails">
+            <!-- Order details like quantity and total price will be populated here -->
+        </div>
+
+        <form class="order-form">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="street">Street Address</label>
+                <input type="text" id="street" required>
+            </div>
+            <div class="form-group">
+                <label for="city">Town/City</label>
+                <input type="text" id="city" required>
+            </div>
+            <div class="form-group">
+                <label for="state">State</label>
+                <input type="text" id="state" required>
+            </div>
+            <div class="form-group">
+                <label for="pincode">Pin Code</label>
+                <input type="text" id="pincode" required>
+            </div>
+            <div class="form-group">
+                <label for="orderNote">Order Note</label>
+                <textarea id="orderNote" rows="3" placeholder="Any specific instructions..."></textarea>
+            </div>
+
+            <button type="button" class="submit-button" onclick="submitOrder()">Place Order</button>
+        </form>
+    </div>
+
+    <script>
+        // Get quantity from URL and calculate total price
+        const urlParams = new URLSearchParams(window.location.search);
+        const quantity = urlParams.get('quantity') || 1;
+        const basePrice = 15.99;
+        const totalPrice = (basePrice * quantity).toFixed(2);
+
+        // Display order details
+        document.getElementById('orderDetails').innerHTML = `
+            <p><strong>Quantity:</strong> ${quantity}</p>
+            <p><strong>Total Price:</strong> $${totalPrice}</p>
+        `;
+
+        // Placeholder for submitting the order
+        function submitOrder() {
+            alert("Order placed successfully!");
+        }
+    </script>
+</body>
+</html>

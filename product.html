@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail Page with Related Products</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            color: #333;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Product Container */
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            /* background-color: white; */
+            /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); */
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px;
+        }
+
+        /* Image Section */
+        .image-gallery {
+            flex: 1;
+            min-width: 300px;
+            max-width: 600px;
+            position: relative;
+        }
+
+        .main-image {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .thumbnail-images {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .thumbnail-images img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .thumbnail-images img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Product Info Section */
+        .product-info {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .product-heading{
+            color: rgb(117, 117, 117);
+        }
+
+        .product-description {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .product-price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #27ae60;
+            margin-bottom: 20px;
+        }
+
+        /* Quantity Selector */
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .quantity-input {
+            width: 50px;
+            text-align: center;
+            font-size: 1.1rem;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .quantity-button {
+            background-color: #8e44ad;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .quantity-button:hover {
+            background-color: #71368a;
+        }
+
+        /* Buy Now Button */
+        .buy-now-button {
+            padding: 15px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #fff;
+            background-color: #8e44ad;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-align: center;
+        }
+
+        .buy-now-button:hover {
+            background-color: #71368a;
+        }
+
+        /* Related Products Section */
+        .related-products {
+            max-width: 1200px;
+            margin: 40px 0;
+            width: 100%;
+        }
+
+        .related-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .related-product-card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .related-product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .related-product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .related-product-title {
+            font-size: 1.1rem;
+            color: #333;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .related-product-price {
+            font-size: 1.2rem;
+            color: #27ae60;
+            margin: 5px 0;
+        }
+
+        /* Responsive Layout */
+        @media (max-width: 768px) {
+            .product-container {
+                flex-direction: column;
+            }
+            
+            .product-info {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="product-container">
+        <!-- Image Gallery Section -->
+        <div class="image-gallery">
+            <img src="https://via.placeholder.com/600x400" alt="Main Product" class="main-image" id="mainImage">
+            <div class="thumbnail-images">
+                <img src="https://via.placeholder.com/600x400" alt="Thumbnail 1" onclick="changeImage(this)">
+                <img src="https://via.placeholder.com/600x400" alt="Thumbnail 2" onclick="changeImage(this)">
+                <img src="https://via.placeholder.com/600x400" alt="Thumbnail 3" onclick="changeImage(this)">
+            </div>
+        </div>
+
+        <!-- Product Information Section -->
+        <div class="product-info">
+            <h1 class="product-title"></h1>
+            <h3 class="product-heading">Product Description</h3> <br>
+            <p class="product-description"></p>
+            <p class="product-price" id="totalPrice"></p>
+
+
+            <!-- Quantity Selector -->
+            <div class="quantity-selector">
+                <button class="quantity-button" onclick="updateQuantity(-1)">-</button>
+                <input type="text" class="quantity-input" id="quantity" value="1" readonly>
+                <button class="quantity-button" onclick="updateQuantity(1)">+</button>
+            </div>
+
+            <button class="buy-now-button" onclick="buyNow()">Buy Now</button>
+        </div>
+    </div>
+
+    <!-- Related Products Section -->
+    <div class="related-products">
+        <h2 class="related-title">More Related Products</h2>
+        <div class="product-grid">
+            <div class="related-product-card">
+                <img src="https://via.placeholder.com/300x200" alt="Product 1" class="related-product-image">
+                <h3 class="related-product-title">Beautiful Henna Pattern</h3>
+                <p class="related-product-price">$12.99</p>
+            </div>
+            <div class="related-product-card">
+                <img src="https://via.placeholder.com/300x200" alt="Product 2" class="related-product-image">
+                <h3 class="related-product-title">Traditional Henna Design</h3>
+                <p class="related-product-price">$18.50</p>
+            </div>
+            <div class="related-product-card">
+                <img src="https://via.placeholder.com/300x200" alt="Product 3" class="related-product-image">
+                <h3 class="related-product-title">Festival Henna Art</h3>
+                <p class="related-product-price">$22.00</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+       document.addEventListener('DOMContentLoaded', function () {
+    // Retrieve product details from sessionStorage
+    const productDetails = JSON.parse(sessionStorage.getItem('productDetails'));
+
+    if (productDetails) {
+        // Set product details
+        document.querySelector('.product-title').textContent = productDetails.title;
+        document.querySelector('.product-description').textContent = productDetails.description;
+        document.getElementById('mainImage').src = productDetails.image;
+
+        // Set initial price and base price per item
+        const basePrice = parseFloat(productDetails.price);
+        const quantityInput = document.getElementById('quantity');
+        const totalPriceElement = document.getElementById('totalPrice');
+
+        // Display the initial total price
+        totalPriceElement.textContent = `₹${basePrice.toFixed(2)}`;
+
+        // Function to update quantity and total price
+        function updateQuantity(change) {
+            let quantity = parseInt(quantityInput.value);
+            quantity = Math.max(1, quantity + change); // Ensure quantity is at least 1
+            quantityInput.value = quantity;
+
+            // Calculate and update total price based on quantity
+            const totalPrice = (basePrice * quantity).toFixed(2);
+            totalPriceElement.textContent = `₹${totalPrice}`;
+        }
+
+        // Attach the updateQuantity function to the +/- buttons
+        document.querySelectorAll('.quantity-button').forEach(button => {
+            button.addEventListener('click', function () {
+                const change = button.textContent === '+' ? 1 : -1;
+                updateQuantity(change);
+            });
+        });
+
+        // Handle the Buy Now button click
+        function buyNow() {
+            const quantity = quantityInput.value;
+            const totalPrice = (basePrice * quantity).toFixed(2);
+            alert(`Thank you for your purchase of ${quantity} item(s) totaling ₹${totalPrice}!`);
+        }
+
+        // Attach the buyNow function to the Buy Now button
+        document.querySelector('.buy-now-button').addEventListener('click', buyNow);
+    } else {
+        // Redirect to home if product details are missing
+        alert("No product details found.");
+        window.location.href = 'index.html';
+    }
+});
+
+// Change main image when a thumbnail is clicked
+function changeImage(thumbnail) {
+    document.getElementById('mainImage').src = thumbnail.src;
+}
+
+
+    </script>
+</body>
+</html>

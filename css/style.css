@@ -1,0 +1,715 @@
+* {
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+
+html,body {
+width:100%;
+height:100vh;
+font-family: "Montserrat", sans-serif;
+background-color:#F3EDD5;
+}
+
+header {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+    /* background-color: red; */
+}
+
+header .video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+
+}
+
+
+.heading-code{
+    width:100%;
+    /* background-color:blue; */
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+
+}
+header h1{
+    font-size: 5vw;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: rgb(62, 62, 62);
+    font-family: "Great Vibes", cursive;
+}
+
+header p{
+    font-size: 2.1vw;
+    font-family: "Great Vibes", cursive;
+    font-weight: 700;
+    color: rgb(62, 62, 62);
+}
+
+header .paragraph{
+    display: flex;
+    gap:10px;
+}
+
+.artist{
+    font-size: 1.3vw;
+    font-family: "Great Vibes", cursive;
+    color: rgb(28, 28, 28);
+    font-weight: 600;
+    margin-top: 10px;
+    letter-spacing: 1.5px;
+
+}
+
+/* ----------------------------------------------------------- */
+ 
+
+/* ----------------------------------------------------------- */
+
+/* third page start here */
+.products{
+    width:100%;
+    height:fit-content;
+    color: rgb(62, 62, 62);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    /* background-color: red; */
+    padding:10px;
+}
+
+.products h1{
+    font-size: 3.5rem;
+    font-family: "Montserrat", sans-serif;
+}
+.card-container{
+    width:100%;
+    height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    display: flex;
+    flex-direction: row;
+    width:500px;
+    height:fit-content;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background-color: #fff;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    text-transform: capitalize;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.card img {
+    width:50%;
+    height: auto;
+    object-fit:cover;
+    object-position: center;
+}
+
+    .sale-badge {
+        position: absolute;
+        top: 5px;
+        left: 10px;
+        background: #ff1900; /* Semi-transparent for glassmorphism */
+        color: #ffffff;
+        font-size: 0.6rem;
+        padding: 5px 10px;
+        border-radius: 8px;
+        font-weight: bold;
+        backdrop-filter: blur(10px); /* Glassmorphism effect */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        animation: pulse 1s infinite;
+    }
+
+  /* Animation for pulsing effect */
+  @keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+.card-content {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #444444;
+    margin-bottom: 10px;
+}
+
+.card-description {
+    font-size: 0.68rem;
+    color: #666;
+    margin-bottom: 15px;
+    line-height:15px;
+    letter-spacing: 1.2px;
+    text-align:left;
+}
+
+.card-price {
+    font-size: 1.3rem;
+    color: #27ae60;
+    margin-bottom: 20px;
+}
+
+  /* Button styling */
+  .cssbuttons-io-button {
+    background: #F3EDD5;
+    color: rgb(68, 68, 68);
+    font-family: inherit;
+    padding: 0.5em 1.2em;
+    font-size: 17px;
+    font-weight: 500;
+    border-radius: 0.9em;
+    border: none;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    box-shadow: inset 0 0 1.6em -0.6em #F3EDD5;
+    overflow: hidden;
+    position: relative;
+    height: 2.5em;
+    padding-right: 3.3em;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Icon container */
+.cssbuttons-io-button .icon {
+    background: white;
+    margin-left: 1em;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.1em;
+    width: 2.2em;
+    border-radius: 0.7em;
+    box-shadow: 0.1em 0.1em 0.6em 0.2em #F3EDD5;
+    right: 0.3em;
+    transition: all 0.3s;
+}
+
+/* Icon transition on hover */
+.cssbuttons-io-button:hover .icon {
+    width: calc(100% - 0.6em);
+}
+
+.cssbuttons-io-button .icon svg {
+    width: 1.1em;
+    transition: transform 0.3s;
+    color: #7b52b9;
+}
+
+.cssbuttons-io-button:hover .icon svg {
+    transform: translateX(0.1em);
+}
+
+/* Button effect on active click */
+.cssbuttons-io-button:active .icon {
+    transform: scale(0.95);
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 500px) {
+    .cssbuttons-io-button {
+        font-size: 15px;
+        padding: 0.4em 1em;
+        padding-right: 2.8em;
+        height: 2.5em;
+    }
+
+    .cssbuttons-io-button .icon {
+        height: 2em;
+        width: 2em;
+        right: 0.2em;
+    }
+
+    .cssbuttons-io-button .icon svg {
+        width: 1em;
+    }
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    
+    .card {
+        flex-direction: column;
+        width: 50%;
+    }
+
+    .card img, .card-content {
+        width: 100%;
+    }
+}
+/* third page end here */
+
+
+/* fourth section start here */
+/* About Me Section */
+.about-me {
+    padding: 40px 0;
+    background-color: #F3EDD5;
+    text-align: center;
+}
+
+.about-container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    /* background-color: blue; */
+}
+
+.about-image {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+    /* background-color: red; */
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 350px;
+    /* border-radius: 50%; */
+    /* border: 4px solid #ddd; */
+    object-fit: cover;
+    object-position: center;
+}
+
+.about-description {
+    flex: 2;
+    padding: 20px;
+    max-width: 600px;
+    text-align: left;
+}
+
+.about-description p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+    font-family: "Montserrat", sans-serif;
+}
+.about-description h1 {
+    font-size: 4rem;
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+    font-family: "Montserrat", sans-serif;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .about-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about-image {
+        margin-bottom: 20px;
+    }
+
+    .about-description {
+        max-width: 90%;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+}
+
+/* fourth section end here */
+
+/* five gallery container start*/
+.image-gallery-container{
+    width:100%;
+    height:100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* background-color: green; */
+    gap: 20px;
+}
+
+.img-gallery{
+width:32%;
+height:fit-content;
+position: relative;
+
+}
+
+.img-gallery img{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+}
+.img-gallery::after{
+width:100%;
+height:100%;
+background-color:transparent;
+content: '';
+position:absolute;
+top:0;
+left:0;
+
+}
+.img-gallery:hover::after{
+    background-color: #f0f0f07b;
+}
+/* five gallery container end */
+
+
+/* six section start*/
+.six-section{
+    width:100%;
+    height: 100vh;
+    /* background-color: red; */
+    background-image:url('../img/Review3.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+  
+
+}
+/* six section end */
+
+
+
+/* footer start  */
+footer{
+    width:100%;
+    height:400px;
+    background-image:url('../img/bg1.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+footer h1{
+    font-size: 4vw;
+    color: rgb(62, 62, 62);
+}
+
+
+.card-form {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .title {
+    font-size:1vw;
+    color: #434343;
+    font-weight: 600;
+    text-align:left;
+  }
+  
+  .form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .group {
+    position: relative;
+  }
+  
+  .form .group label {
+    font-size: 14px;
+    color: rgb(99, 102, 102);
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    background-color: #fff;
+    transition: all .3s ease;
+  }
+  
+  .form .group input,
+  .form .group textarea {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    outline: 0;
+    width: 100%;
+    background-color: transparent;
+  }
+  
+  .form .group input:placeholder-shown+ label, .form .group textarea:placeholder-shown +label {
+    top: 10px;
+    background-color: transparent;
+  }
+  
+  .form .group input:focus,
+  .form .group textarea:focus {
+    border-color: #3366cc;
+  }
+  
+  .form .group input:focus+ label, .form .group textarea:focus +label {
+    top: -10px;
+    left: 10px;
+    background-color: #fff;
+    color: #3366cc;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  
+  .form .group textarea {
+    resize: none;
+    height: 100px;
+  }
+  
+  .form button {
+    background-color: #3366cc;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .form button:hover {
+    background-color: #27408b;
+  }
+  
+  
+/* footer end */
+
+
+
+@media (max-width:786px) {
+    header {
+        position: relative;
+        width: 100%;
+        height: 50vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        overflow: hidden;
+        /* background-color: red; */
+    }
+    
+    header .video-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+    
+    }
+    
+    
+    .heading-code{
+        width:100%;
+        /* background-color:blue; */
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        padding: 10px;
+    
+    }
+    header h1{
+        font-size:5vw;
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        color: rgb(62, 62, 62);
+        font-family: "Great Vibes", cursive;
+    }
+    
+    header p{
+        font-size: 5vw;
+        font-family: "Great Vibes", cursive;
+        font-weight: 700;
+        color: rgb(62, 62, 62);
+    }
+    
+    header .paragraph{
+        display: flex;
+        gap:10px;
+    }
+    
+    .artist{
+        font-size: 1.3vw;
+        font-family: "Great Vibes", cursive;
+        color: rgb(28, 28, 28);
+        font-weight: 600;
+        margin-top: 10px;
+        letter-spacing: 1.5px;
+    
+    }
+    
+    
+
+
+    /* third page start here */
+.products{
+   
+    height:fit-content;
+}
+
+.products h1{
+    font-size: 2rem;
+}
+
+.card-container{
+    width:100%;
+}
+
+.card{
+    width:fit-content;
+    height:fit-content;
+    gap:10px;
+}
+
+
+
+.card h2{
+    font-size: 1.3rem;
+    
+}
+
+
+/* third page end here */
+
+
+/* fourth section start here */
+
+.about-me{
+   
+    flex-direction:none;
+
+}
+
+.about-me .profile-content{
+    width:100%;
+    flex-direction: column-reverse;
+}
+.about-me h1{
+    font-size: 10vw;
+}
+
+.content{
+    width:100%;
+    height:fit-content;
+    box-shadow:none;
+    left:0px;
+    top:0;
+    padding: 10px;
+}
+
+.content p{
+    font-size:3vw;
+    line-height:30px;
+}
+.profile{
+    width:100%;  
+}
+
+
+
+/* fourth section end here */
+
+
+
+/* five gallery container start*/
+.image-gallery-container{
+    width:100%;
+    height:100%;
+    display: flex;
+    flex-wrap:wrap;
+    flex-direction:row;
+    justify-content: center;
+    align-items: center;
+    /* background-color: green; */
+    gap: 10px;
+    
+}
+
+.img-gallery{
+width:45%;
+height:fit-content;
+position: relative;
+
+}
+
+.img-gallery img{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+    aspect-ratio: 4/7;
+}
+.img-gallery::after{
+width:100%;
+height:100%;
+background-color:transparent;
+content: '';
+position:absolute;
+top:0;
+left:0;
+
+}
+.img-gallery:hover::after{
+    background-color: #f0f0f07b;
+}
+/* five gallery container end */
+
+}

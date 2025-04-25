@@ -9,109 +9,113 @@ html,body {
 width:100%;
 height:100vh;
 font-family: "Montserrat", sans-serif;
-background-color:#F3EDD5;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
 }
 
-            .navbar {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 1rem 2rem;
-                background-color: #fff;
-                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-                position: fixed;
-                width: 100%;
-                top: 0;
-                z-index: 1000;
-            }
+.logo h2 {
+    color: #333;
+    font-family: 'Great Vibes', cursive;
+    font-size: 2rem;
+}
 
-            .logo h2 {
-                color: #333;
-                font-family: 'Great Vibes', cursive;
-                font-size: 2rem;
-            }
+.nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    list-style: none;
+}
 
-            .nav-links {
-                display: flex;
-                justify-content: space-around;
-                width: 50%;
-                list-style: none;
-            }
+.nav-links a {
+    color: #333;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
 
-            .nav-links a {
-                color: #333;
-                text-decoration: none;
-                font-family: 'Montserrat', sans-serif;
-                font-weight: 500;
-                transition: all 0.3s ease;
-            }
+.nav-links a:hover {
+    color: #9c6644;
+}
 
-            .nav-links a:hover {
-                color: #9c6644;
-            }
+.cart-icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #333;
+}
 
-            .burger {
-                display: none;
-                cursor: pointer;
-            }
+.cart-icon:hover {
+    color: #9c6644;
+}
 
-            .burger div {
-                width: 25px;
-                height: 3px;
-                background-color: #333;
-                margin: 5px;
-                transition: all 0.3s ease;
-            }
+.burger {
+    display: none;
+    cursor: pointer;
+}
 
-            @media screen and (max-width: 768px) {
-                .nav-links {
-                    position: absolute;
-                    right: 0px;
-                    height: 92vh;
-                    top: 8vh;
-                    background-color: #fff;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    width: 50%;
-                    transform: translateX(100%);
-                    transition: transform 0.5s ease-in;
-                }
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 5px;
+    transition: all 0.3s ease;
+}
 
-                .nav-links li {
-                    opacity: 0;
-                }
+@media screen and (max-width: 768px) {
+    .nav-links {
+        position: fixed;
+        right: -100%;
+        top: 70px;
+        flex-direction: column;
+        background-color: rgba(255, 255, 255, 0.9);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        padding: 2rem;
+    }
 
-                .burger {
-                    display: block;
-                }
-            }
+    .nav-links.active {
+        right: 0;
+    }
 
-            .nav-active {
-                transform: translateX(0%);
-            }
+    .burger {
+        display: block;
+    }
+}
+
+.burger.active .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.burger.active .line2 {
+    opacity: 0;
+}
+
+.burger.active .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+           
 
 header {
     position: relative;
     width: 100%;
-    height: 100vh;
+    height:fit-content;
+    /* background-color: red; */
+    padding: 1px;
     display: flex;
-    justify-content: center;
+    justify-content:start;
     align-items: center;
     flex-direction: column;
-    overflow: hidden;
-    /* background-color: red; */
-}
-
-header .video-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
-
 }
 
 
@@ -125,36 +129,65 @@ header .video-bg {
 
 }
 header h1{
-    font-size: 5vw;
+    font-size: 7vw;
     position: relative;
-    z-index: 1;
     text-align: center;
-    color: rgb(62, 62, 62);
-    font-family: "Great Vibes", cursive;
+    color:#a78f51;
+    /* font-family: "Great Vibes", cursive; */
+    font-family: "Yatra One", system-ui;
+    margin-top: 7vw;
 }
 
 header p{
-    font-size: 2.1vw;
-    font-family: "Great Vibes", cursive;
+    font-size: 2.9vw;
+    font-family: "Yatra One", system-ui;
     font-weight: 700;
     color: rgb(62, 62, 62);
+  
 }
 
 header .paragraph{
-    display: flex;
-    gap:10px;
+  text-align:center;
 }
 
 .artist{
-    font-size: 1.3vw;
-    font-family: "Great Vibes", cursive;
+    font-size: 1.2vw;
+    font-family: "Yatra One", system-ui;
     color: rgb(28, 28, 28);
     font-weight: 600;
     margin-top: 10px;
     letter-spacing: 1.5px;
-
+    text-align:center;
 }
 
+#wrapper{
+    width:100%;
+    height:130vh;
+    background-image:url('../img/headerpannamd.jpg');
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-attachment: fixed; */
+}
+
+.buy-now{
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2vw;
+    font-family: "Montserrat", sans-serif;
+    position: relative;
+    margin-top: 3vw;
+    letter-spacing: 1.2px;
+}
+
+.buy-now:hover{
+    background-color: #9c6644;
+    transition: all 0.3s ease;
+}
 /* ----------------------------------------------------------- */
  
 
